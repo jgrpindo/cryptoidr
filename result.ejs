@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversion Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 0;
+            color: #007bff;
+        }
+        .result-item {
+            margin-bottom: 10px;
+        }
+        .result-item label {
+            font-weight: bold;
+        }
+        .result-item p {
+            margin: 5px 0;
+        }
+        .link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversion Result</h1>
+        <div class="result-item">
+            <label>From:</label>
+            <p><%= result.fromSymbol %></p>
+        </div>
+        <div class="result-item">
+            <label>To:</label>
+            <p><%= result.toSymbol %></p>
+        </div>
+        <div class="result-item">
+            <label>Rate <%= result.fromSymbol %> to USDT (Buy Order):</label>
+            <p><%= result.rateFromToUSDT ? result.rateFromToUSDT.toFixed(6) : 'N/A' %></p>
+        </div>
+        <div class="result-item">
+            <label>Rate USDT to <%= result.toSymbol %> (Buy Order):</label>
+            <p><%= result.rateUSDTToFinal ? result.rateUSDTToFinal.toFixed(6) : 'N/A' %></p>
+        </div>
+        <div class="result-item">
+            <label>Amount to Convert:</label>
+            <p><%= result.amount %> <%= result.fromSymbol %></p>
+        </div>
+        <div class="result-item">
+            <label>Converted Amount:</label>
+            <p><%= result.convertedAmount %> <%= result.toSymbol %></p>
+        </div>
+        <a href="/" class="link">Convert Another</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crypto Converter</title>
+    <style>
+        /* CSS for centering the form vertically */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Adjust as needed */
+        }
+        .form {
+            width: 300px; /* Adjust the width of the form */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        /* CSS for left alignment of the form */
+        .form-inner {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-inner label {
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        .form-inner input,
+        .form-inner select,
+        .form-inner button {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .form-inner button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-inner button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form">
+            <h1>Crypto Converter</h1>
+            <form action="/convert" method="post">
+                <div class="form-inner">
+                    <label for="conversionType">Conversion Type:</label>
+                    <select name="conversionType" id="conversionType">
+                        <option value="Crypto to IDR">Crypto to IDR</option>
+                        <option value="IDR to Crypto">IDR to Crypto</option>
+                    </select>
+                    <label for="fromSymbol">From Symbol:</label>
+                    <input type="text" id="fromSymbol" name="fromSymbol" placeholder="From Symbol (e.g., BTC)" required>
+                    <label for="toSymbol">To Symbol:</label>
+                    <input type="text" id="toSymbol" name="toSymbol" placeholder="To Symbol (e.g., IDR)" required>
+                    <label for="amount">Amount:</label>
+                    <input type="number" name="amount" placeholder="Amount" required step="any">
+                    <button type="submit">Convert</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var conversionSelect = document.getElementById('conversionType');
+            var fromSymbolInput = document.getElementById('fromSymbol');
+            var toSymbolInput = document.getElementById('toSymbol');
+
+            function updatePlaceholders() {
+                var conversionType = conversionSelect.value;
+                if (conversionType === 'Crypto to IDR') {
+                    fromSymbolInput.placeholder = "From Symbol (e.g., BTC)";
+                    toSymbolInput.placeholder = "To Symbol (e.g., IDR)";
+                } else if (conversionType === 'IDR to Crypto') {
+                    fromSymbolInput.placeholder = "From Symbol (e.g., IDR)";
+                    toSymbolInput.placeholder = "To Symbol (e.g., BTC)";
+                }
+            }
+
+            // Initialize placeholders
+            updatePlaceholders();
+
+            // Update placeholders on conversion type change
+            conversionSelect.addEventListener('change', updatePlaceholders);
+        });
+    </script>
+</body>
+</html>
